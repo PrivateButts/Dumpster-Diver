@@ -1,7 +1,6 @@
-*This project is unfinished, check back in a couple weeks*
+_This project is unfinished and is unsuitable for production use, check back in a couple weeks_
 
-Dumpster Diver
-______________
+# Dumpster Diver
 
 Simple digital asset management for game development
 

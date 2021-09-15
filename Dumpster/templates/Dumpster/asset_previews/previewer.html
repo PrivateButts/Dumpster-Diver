@@ -1,7 +1,9 @@
 {% if type == 'image' %}
-    {% include 'Dumpster/asset_previews/image_asset.html' with image=asset only %}
+{% include 'Dumpster/asset_previews/image_asset.html' with image=asset only %}
 {% elif type == 'video' %}
-    {% include 'Dumpster/asset_previews/video_asset.html' with video=asset only %}
+{% include 'Dumpster/asset_previews/video_asset.html' with video=asset only %}
 {% elif type == 'audio' %}
-    {% include 'Dumpster/asset_previews/audio_asset.html' with audio=asset only %}
+{% include 'Dumpster/asset_previews/audio_asset.html' with audio=asset only %}
+{% elif type == 'text' %}
+{% include 'Dumpster/asset_previews/text_asset.html' with snippet=asset only %}
 {% endif %}

@@ -130,3 +130,6 @@ dmypy.json
 
 .vscode
 /media
+node_modules
+/static/webpack
+/staticfiles/

@@ -1,3 +1,6 @@
+{% extends 'base.html' %}
+
+{% block body %}
 <h1>Asset</h1>
 <ul>
     <li>{{ Asset.name }}</li>
@@ -16,6 +19,7 @@
     <li>{{ Asset.current_version.file }}</li>
     <li>{{ Asset.current_version.file.name }}</li>
     <li>{{ Asset.current_version.file.url }}</li>
-    <li>{% include 'Dumpster/asset_previews/previewer.html' with type=Asset.type asset=Asset.current_version only %}</li>
     <li>{{ Asset.current_version.notes }}</li>
 </ul>
+{% include 'Dumpster/asset_previews/previewer.html' with type=Asset.type asset=Asset.current_version only %}
+{% endblock %}

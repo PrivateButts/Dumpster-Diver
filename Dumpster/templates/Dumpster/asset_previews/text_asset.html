@@ -1,0 +1,3 @@
+{% load static %}
+
+<pre>{% if snippet.syntax_highlighting_language %}<code class="language-{{snippet.syntax_highlighting_language}}">{{ snippet.text }}</code>{% else %}{{ snippet.text }}{% endif %}</pre>
