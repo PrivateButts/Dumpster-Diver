@@ -6,4 +6,6 @@
 {% include 'Dumpster/asset_previews/audio_asset.html' with audio=asset only %}
 {% elif type == 'text' %}
 {% include 'Dumpster/asset_previews/text_asset.html' with snippet=asset only %}
+{% elif type == 'model' %}
+{% include 'Dumpster/asset_previews/model_asset.html' with model=asset only %}
 {% endif %}
