@@ -6,6 +6,7 @@ from . import models
 @admin.register(models.Asset)
 class AssetAdmin(admin.ModelAdmin):
     model = models.Asset
+    autocomplete_fields = ['tags']
 
 
 @admin.register(models.ImageAsset)
@@ -36,3 +37,9 @@ class TextureAssetAdmin(admin.ModelAdmin):
 @admin.register(models.ModelAsset)
 class ModelAssetAdmin(admin.ModelAdmin):
     model = models.ModelAsset
+
+
+@admin.register(models.Tag)
+class TagAdmin(admin.ModelAdmin):
+    model = models.Tag
+    search_fields = ['name']

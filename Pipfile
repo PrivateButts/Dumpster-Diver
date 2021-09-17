@@ -5,6 +5,10 @@ name = "pypi"
 
 [packages]
 django = "*"
+pillow = "*"
+sorl-thumbnail = "*"
+django-colorfield = "*"
+django-filter = "*"
 
 [dev-packages]
 

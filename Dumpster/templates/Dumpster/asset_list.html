@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% load static thumbnail absolutify %}
+
+
+{% block body %}
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-2 border-end">
+                <form action="" method="GET">
+                    <legend>Filters</legend>
+
+                    <!-- Search -->
+                    <div class="mb-3">
+                        <label for="search" class="form-label">Search</label>
+                        <input type="text" class="form-control" id="search" name="name__contains" value="{{ request.GET.name__contains }}">
+                    </div>
+                </form>
+                <form class="mt-3" method="get">
+                    <legend>Built in form</legend>
+                    {{ filter.form.as_p }}
+                    <input type="submit" />
+                </form>
+            </div>
+            <div class="col-10">
+                <h1>Assets</h1>
+                <div class="row">
+                    {% for asset in Assets %}
+                        <div class="col">
+                            <div class="card">
+                                <div class="card-header">
+                                    {{ asset.name }}
+                                </div>
+
+                                {% absolutify asset.current_version.get_preview_image as image %}
+                                {% thumbnail image "250x250" crop="center" as im %}
+                                    <img src="{{ im.url }}" class="card-img" />
+                                {% endthumbnail %}
+                                
+                                {% if asset.tags.all %}
+                                    <div class="card-footer text-muted">
+                                        {% for tag in asset.tags.all %}
+                                            {% if tag.text_color and tag.background_color %}
+                                                <span class="badge" style="color:{{ tag.text_color }}; background-color: {{ tag.background_color }}">{{ tag.name }}</span>
+                                            {% else %}
+                                                <span class="badge bg-primary">{{ tag.name }}</span>
+                                            {% endif %}
+                                        {% endfor %}
+                                    </div>
+                                {% endif %}
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

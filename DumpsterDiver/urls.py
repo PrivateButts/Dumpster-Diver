@@ -18,9 +18,10 @@ from django.urls import path
 from django.conf import settings
 from django.conf.urls.static import static
 
-from Dumpster.views import AssetDetailView
+from Dumpster.views import AssetDetailView, AssetListView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('assets/', AssetListView.as_view(), name='asset-list'),
     path('asset/<int:pk>/', AssetDetailView.as_view(), name='asset-detail')
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
