@@ -133,3 +133,4 @@ dmypy.json
 node_modules
 /static/webpack
 /staticfiles/
+/cache

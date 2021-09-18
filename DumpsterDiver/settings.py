@@ -37,11 +37,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    
+
     'sorl.thumbnail',
     'colorfield',
     'django_filters',
-    
+
     'Dumpster'
 ]
 
@@ -137,3 +137,18 @@ MEDIA_ROOT = BASE_DIR / 'media'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+# Caching
+CACHES = {
+    'default': {
+        'BACKEND': 'diskcache.DjangoCache',
+        'LOCATION': BASE_DIR / 'cache',
+        'TIMEOUT': 300,
+        'SHARDS': 8,
+        'DATABASE_TIMEOUT': 0.010,
+        'OPTIONS': {
+            'size_limit': 2 ** 30
+        },
+    },
+}

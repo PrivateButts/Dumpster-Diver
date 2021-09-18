@@ -14,7 +14,10 @@
     {% block extrahead %}{% endblock %}
 </head>
 
-<body>
+<body class="d-flex flex-column">
+    <nav class="navbar navbar-dark bg-dark">
+        <div class="container-fluid"><a href="/" class="navbar-brand">Dumpster Diver</a></div>
+    </nav>
     {% block body %}{% endblock %}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/components/prism-core.min.js"
         integrity="sha512-hM0R3pW9UdoNG9T+oIW5pG9ndvy3OKChFfVTKzjyxNW9xrt6vAbD3OeFWdSLQ8mjKSgd9dSO3RXn3tojQtiA8Q=="

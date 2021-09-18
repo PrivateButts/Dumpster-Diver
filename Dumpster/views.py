@@ -3,7 +3,7 @@ from django.views import generic
 import django_filters
 from django_filters.views import FilterView
 
-from .models import Asset
+from .models import Asset, Tag
 
 
 class AssetFilter(django_filters.FilterSet):
@@ -11,9 +11,11 @@ class AssetFilter(django_filters.FilterSet):
         model = Asset
         fields = {
             'name': ['exact', 'contains'],
+            'type': ['exact'],
             'tags': ['exact']
         }
         # fields = ['name', 'tags']
+
 
 class AssetListView(FilterView):
     context_object_name = "Assets"
