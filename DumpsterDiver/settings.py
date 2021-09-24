@@ -60,7 +60,9 @@ ROOT_URLCONF = 'DumpsterDiver.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [
+            BASE_DIR / "DumpsterDiver" / "templates"
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -152,3 +154,5 @@ CACHES = {
         },
     },
 }
+
+LOGIN_REDIRECT_URL = 'home'

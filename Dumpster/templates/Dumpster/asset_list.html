@@ -9,6 +9,14 @@
     body {
         height: 100%
     }
+
+    .asset-list-body {
+        max-height: 15em;
+    }
+
+    .asset-list-body>pre {
+        margin: 0;
+    }
 </style>
 {% endblock %}
 
@@ -63,12 +71,17 @@
                             {{ asset.name }}
                         </div>
 
+                        {% if asset.type == 'text' %}
+                        <div class="card-body asset-list-body p-0 overflow-scroll">
+                            {% include 'Dumpster/asset_views/text_asset.html' with snippet=asset.current_version only %}
+                        </div>
+                        {% else %}
                         {% absolutify asset.current_version.get_preview_image as image %}
                         {% thumbnail image "250x250" crop="center" as im %}
-                        <img src="{{ im.url }}" class="card-img" />
+                        <img src="{{ im.url }}" class="card-img asset-list-body" />
                         {% endthumbnail %}
+                        {% endif %}
 
-                        {% if asset.tags.all %}
                         <div class="card-footer text-muted">
                             {% for tag in asset.tags.all %}
                             {% if tag.text_color and tag.background_color %}
@@ -77,9 +90,10 @@
                             {% else %}
                             <span class="badge bg-primary">{{ tag.name }}</span>
                             {% endif %}
+                            {% empty %}
+                            <span class="badge bg-secondary">Untagged</span>
                             {% endfor %}
                         </div>
-                        {% endif %}
                     </div>
                 </div>
                 {% endfor %}
