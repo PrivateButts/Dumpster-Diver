@@ -22,6 +22,7 @@ class AssetListView(FilterView):
     model = Asset
     template_name = "Dumpster/asset_list.html"
     filterset_class = AssetFilter
+    paginate_by = 100
 
 
 class AssetDetailView(generic.DetailView):

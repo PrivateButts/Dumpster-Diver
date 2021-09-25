@@ -83,17 +83,9 @@
                         {% endif %}
 
                         <div class="card-footer text-muted">
-                            {% for tag in asset.tags.all %}
-                            {% if tag.text_color and tag.background_color %}
-                            <span class="badge"
-                                style="color:{{ tag.text_color }}; background-color: {{ tag.background_color }}">{{ tag.name }}</span>
-                            {% else %}
-                            <span class="badge bg-primary">{{ tag.name }}</span>
-                            {% endif %}
-                            {% empty %}
-                            <span class="badge bg-secondary">Untagged</span>
-                            {% endfor %}
+                            {% include 'Dumpster/tag_badges.html' with tags=asset.tags.all only %}
                         </div>
+                        <a class="stretched-link" href="{% url 'asset-detail' asset.id %}"></a>
                     </div>
                 </div>
                 {% endfor %}

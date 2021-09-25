@@ -1,0 +1,10 @@
+{% for tag in tags %}
+{% if tag.text_color and tag.background_color %}
+<span class="badge"
+    style="color:{{ tag.text_color }}; background-color: {{ tag.background_color }}">{{ tag.name }}</span>
+{% else %}
+<span class="badge bg-primary">{{ tag.name }}</span>
+{% endif %}
+{% empty %}
+<span class="badge bg-secondary">Untagged</span>
+{% endfor %}

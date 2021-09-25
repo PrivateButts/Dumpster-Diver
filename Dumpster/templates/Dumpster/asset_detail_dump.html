@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block body %}
+<h1>Asset</h1>
+<ul>
+    <li>{{ Asset.name }}</li>
+    <li>{{ Asset.source }}</li>
+    <li>{{ Asset.author }}</li>
+    <li>{{ Asset.attribution_required }}</li>
+    <li>{{ Asset.attribution_text }}</li>
+    <li>{{ Asset.type }}</li>
+    <li>{{ Asset.versions }}</li>
+    <li>{{ Asset.get_absolute_url }}</li>
+</ul>
+
+<h1>Current Version</h1>
+<ul>
+    <li>{{ Asset.current_version.number }}</li>
+    <li>{{ Asset.current_version.file }}</li>
+    <li>{{ Asset.current_version.file.name }}</li>
+    <li>{{ Asset.current_version.file.url }}</li>
+    <li>{{ Asset.current_version.notes }}</li>
+</ul>
+{% include 'Dumpster/asset_views/viewer.html' with type=Asset.type asset=Asset.current_version only %}
+{% endblock %}

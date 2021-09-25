@@ -1,6 +1,53 @@
 {% extends 'base.html' %}
 
 {% block body %}
+<div class="container">
+    <div class="row mt-5">
+        <div class="col-md-6 order-md-last text-center">{% include 'Dumpster/asset_views/viewer.html' with type=Asset.type asset=Asset.current_version only %}</div>
+        <div class="col-md-6 order-md-first">
+            <h1>{{ Asset.name }}</h1>
+            <table class="table table-striped table-bordered">
+                <thead>
+                    <tr>
+                        <th>Field</th>
+                        <th>Value</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th scope="row">Type</th>
+                        <td>{{ Asset.get_type_display }}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Source</th>
+                        <td>{{ Asset.source }}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Author</th>
+                        <td>{{ Asset.author }}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Attribution required</th>
+                        <td data-bs-toggle="popover" title="" data-bs-trigger="hover focus click" data-bs-content="{{ Asset.attribution_text }}" data-bs-placement="right">{{ Asset.attribution_required|yesno:"Yes,No" }}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Tags</th>
+                        <td>{% include 'Dumpster/tag_badges.html' with tags=asset.tags.all only %}</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>Versions</h3>
+            <ul class="list-group">
+                {% for version in Asset.versions.all %}
+                <a target="_blank" href="{{ version.file.url }}" class="list-group-item {% if version.id == Asset.current_version.id %}active{% endif %}">{{ version }}</a>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</div>
+
+{% comment %}
 <h1>Asset</h1>
 <ul>
     <li>{{ Asset.name }}</li>
@@ -22,4 +69,5 @@
     <li>{{ Asset.current_version.notes }}</li>
 </ul>
 {% include 'Dumpster/asset_views/viewer.html' with type=Asset.type asset=Asset.current_version only %}
+{% endcomment %}
 {% endblock %}

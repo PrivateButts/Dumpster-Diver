@@ -28,7 +28,7 @@
     "webpack-cli": "^4.8.0"
   },
   "dependencies": {
-    "@popperjs/core": "^2.9.3",
+    "@popperjs/core": "^2.10.1",
     "bootstrap": "^5.1.0",
     "glsl-blend-soft-light": "^1.0.5",
     "glsl-film-grain": "^1.0.4",
